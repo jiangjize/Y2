@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<phones>
+    <phone name="小米">
+        <type name="小米2"></type>
+        <type name="小米3"></type>
+        <type name="小米4"></type>
+    </phone>
+    <phone name="iPhone">
+        <type name="iPhone6" pr="4500"></type>
+        <type name="iPhone7"></type>
+        <type name="iPhone8"></type>
+    </phone>
+    <phone name="三星">
+        <type name="三星2"></type>
+        <type name="三星3"></type>
+        <type name="三星4"></type>
+    </phone>
+</phones>

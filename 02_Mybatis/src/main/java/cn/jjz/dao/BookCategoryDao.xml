@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.BookCategoryDao">
+<resultMap id="a" type="BookCategory">
+    <id column="cateid" property="cateid"></id>
+    <result property="catename" column="catename"></result>
+    <collection property="books" ofType="Book" >
+    <id column="bookid" property="bookid"></id>
+        <result property="bookname" column="bookname"></result>
+        <result property="bookcategory" column="bookcategory"></result>
+    </collection>
+</resultMap>
+    <select id="SelectCategoryName" resultMap="a">
+      SELECT  b.bookname,c.catename from book b,bookcategory c
+       WHERE b.bookcategory=c.cateid and b.bookcategory=#{bookcategory}
+    </select>
+
+    <select id="AllSelect" resultType="BookCategory">
+        select * from bookcategory
+    </select>
+    <resultMap id="SelectCategoryMap" type="BookCategory">
+        <id column="cateid" property="cateid"></id>
+        <result property="catename" column="catename"></result>
+        <association property="books" javaType="Book">
+                <result property="bookname" column="bookname"></result>
+                <result property="bookcategory" column="bookcategory"></result>
+        </association>
+    </resultMap>
+    <select id="SelectCategory" resultMap="SelectCategoryMap">
+      select bc.*,c.catename from book bc,bookcategory c
+       WHERE  bc.bookcategory=c.cateid
+       and bc.bookcategory=#{bookcategory}
+    </select>
+
+</mapper>

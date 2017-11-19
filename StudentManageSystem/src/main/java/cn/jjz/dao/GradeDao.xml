@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.GradeDao">
+    <!-- 查询所有班级-->
+    <resultMap id="GradeMap" type="GradeInfo">
+        <id property="gracode" column="gracode"></id>
+        <result property="graname" column="graname"></result>
+        <association property="studentInfo" javaType="StudentInfo">
+            <id property="stucode" column="stucode"></id>
+            <result property="stuname" column="stuname"></result>
+            <result property="stugrade" column="stugrade"></result>
+            <result property="stuscore" column="stuscore"></result>
+        </association>
+    </resultMap>
+    <select id="selectAllGrade" resultMap="GradeMap">
+        SELECT * from gradeinfo
+
+    </select>
+    <!-- 添加班级-->
+    <insert id="addGrade" parameterType="GradeInfo">
+        insert into gradeinfo(graname) VALUE (#{graname})
+    </insert>
+    <!-- 删除学生-->
+    <!-- 修改学生-->
+
+</mapper>

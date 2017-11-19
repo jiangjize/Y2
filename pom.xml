@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.jjz</groupId>
+  <artifactId>Smbms-SpringMVC</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>SmbmsMvc</module>
+      <module>04_Mybatis</module>
+      <module>SpringBootDemo</module>
+      <module>HibernateDemo2</module>
+      <module>Tms</module>
+      <module>HSSM</module>
+      <module>SSHZH</module>
+      <module>Struts2Demo</module>
+      <module>Dom4jCase</module>
+      <module>Dom4jCase</module>
+      <module>SSMDemo1</module>
+      <module>SSHDemo1</module>
+      <module>SSHDemo2</module>
+      <module>SSMDemo2</module>
+      <module>SSMDemo3</module>
+  </modules>
+  <name>Smbms-SpringMVC Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>Smbms-SpringMVC</finalName>
+  </build>
+</project>

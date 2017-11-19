@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.UserDao">
+    <!-- 登陆-->
+    <select id="Login" resultType="User" parameterType="User" >
+        select userCode,userName  from smbms_user where userName=#{userName} and userPassword=#{userPwd}
+    </select>
+
+
+</mapper>

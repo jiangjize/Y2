@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+     <bean id="demoService" class="cn.jjz.service.DemoService" scope="prototype">
+        <property name="info" value="今天讲Spring，同学们好好准备准备"/>
+         <property name="name" value="老师"/>
+
+     </bean>
+    <bean id="zhang" class="cn.jjz.service.DemoService" scope="prototype">
+        <property name="name" value="张嘎"/>
+        <property name="info" value="一天不打鬼子手就痒"/>
+    </bean>
+     <bean id="b" class="cn.jjz.service.DemoB">
+         <property name="b" value="Spring"></property>
+     </bean>
+    <bean id="demob" class="cn.jjz.service.DemoB">
+        <property name="a" value="Spring"/>
+    </bean>
+
+    <bean id="car" class="cn.jjz.service.Car">
+        <property name="brend" value="法拉利"/>
+        <property name="cole" value="红"/>
+    </bean>
+    <bean id="stu" class="cn.jjz.service.Student">
+        <property name="name" value="小明"/>
+        <property name="age" value="11"/>
+        <property name="car" ref="car"/>
+    </bean>
+
+
+    <bean id="m" class="cn.jjz.printer.mohe.AMohe"></bean>
+    <bean id="z" class="cn.jjz.printer.zhi.AZhi"/>
+    <bean id="p" class="cn.jjz.printer.dayin.Daying">
+        <property name="mohe" ref="m"></property>
+        <property name="zhi" ref="z"></property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+     <bean id="bookdao" class="cn.jjz.springdemo2.dao.BookDaoImpl"></bean>
+     <bean id="bookservice" class="cn.jjz.springdemo2.service.BookServiceImpl">
+         <property name="dao" ref="bookdao"></property>
+     </bean>
+    <bean id="bookdaili" class="cn.jjz.springdemo2.qie.Bookdaili"></bean>
+    <aop:config>
+        <aop:pointcut id="my" expression="execution(public void add(cn.jjz.springdemo2.entity.Book))">
+
+        </aop:pointcut>
+       <aop:advisor advice-ref="bookdaili" pointcut-ref="my"></aop:advisor>
+    </aop:config>
+</beans>

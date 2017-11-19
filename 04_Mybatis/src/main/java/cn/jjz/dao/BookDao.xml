@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.BookDao">
+<select id="getBook" resultType="Book" >
+    select * from book where bookid >${35} ORDER BY bookid
+</select>
+    <select id="byName" resultType="Book" parameterType="Book">
+        SELECT * from book where bookid=#{name}
+    </select>
+    <select id="byName2" resultType="Book" parameterType="Book">
+        SELECT * from book where bookid = ${2}
+    </select>
+
+</mapper>

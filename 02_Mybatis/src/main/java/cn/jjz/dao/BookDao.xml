@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookDao">
+
+
+    <!-- 查询所有图书-->
+    <select id="bookList"  resultType="Book">
+        select * from book
+    </select>
+    <!-- 按ID查询图书-->
+    <select id="byIdSelect"  resultType="Book">
+        select * from book WHERE bookid=#{bookid}
+    </select>
+    <!-- 添加-->
+    <insert id="Add" parameterType="String" >
+        insert INTO book(bookname,bookauthor) VALUE (#{bookname},#{bookauthor});
+    </insert>
+    <!-- 删除-->
+    <delete id="Del" parameterType="int">
+        DELETE FROM book WHERE bookid=#{bookid}
+    </delete>
+    <!-- 修改-->
+    <update id="Up" parameterType="Book">
+        UPDATE book SET  bookname=#{bookname},bookauthor=#{bookauthor},bookabout=#{bookabout},
+        bookcategory=${bookcategory},bookprice=#{bookprice},bookdatetime=#{bookdatetime}
+        WHERE bookid=#{bookid}
+    </update>
+
+    <!-- 模糊查询-->
+
+    <select id="LikeBookInfo" parameterType="String" resultType="Book">
+        SELECT * from book where bookname like CONCAT('%',#{bookname},'%')
+    </select>
+
+
+    <!-- 多条件查询-->
+    <select id="ByNeedSelect" resultType="Book" parameterType="Book">
+        SELECT * from book WHERE bookname like CONCAT('%',#{bookname},'%') and bookcategory=#{bookcategory} OR bookauthor=#{bookauthor}
+    </select>
+
+    <resultMap id="BookResultMap" type="Book">
+        <result property="bookname" column="bookname"></result>
+        <result property="bookauthor" column="bookauthor"></result>
+        <result property="bookcategory" column="bookcategory"></result>
+    </resultMap>
+    <!--查询图书的分类和作者-->
+    <select id="SelectBookTypeAndAuthor" resultMap="BookResultMap">
+        SELECT b.*,bc.catename from book b,bookcategory bc where b.bookcategory=bc.cateid
+    </select>
+    <resultMap id="ByidBookResultMap" type="Book">
+        <id property="bookid" column="bookid"></id>
+        <result property="bookname" column="bookname"></result>
+        <result property="bookauthor" column="bookauthor"></result>
+        <result property="bookcategory" column="bookcategory"></result>
+    </resultMap>
+    <!--按图书ID查询图书的分类和作者-->
+    <select id="ByIdSelectBookTypeAndAuthor" resultMap="ByidBookResultMap">
+        SELECT b.*,bc.catename from book b,bookcategory bc where b.bookid=#{bookid} and b.bookcategory=bc.cateid
+    </select>
+
+
+    <!--按图书类型ID获取该类型图书信息-->
+    <resultMap id="ByTypeResultMap" type="Book">
+        <id property="bookid" column="bookid"></id>
+        <result property="bookname" column="bookname"></result>
+        <result property="bookauthor" column="bookauthor"></result>
+        <result property="bookcategory" column="bookcategory"></result>
+        <association property="bookCategory" javaType="BookCategory">
+            <id property="cateid" column="cateid"/>
+            <result property="catename" column="catename"/>
+        </association>
+    </resultMap>
+
+    <select id="ByTypeIdGetBookInfo" resultMap="ByTypeResultMap">
+      SELECT b.*,bc.cateid,bc.catename from book b,bookcategory bc
+      where b.bookcategory=#{bookcategory}
+       and b.bookcategory=bc.cateid
+    </select>
+    <!--按图书类型ID获取该类型图书信息2-->
+    <resultMap id="Byinfo2" type="Book">
+        <id property="bookid" column="bookid"/>
+        <result property="bookname" column="bookname"/>
+        <result property="bookcategory" column="bookcategory"/>
+        <association property="bookCategory"   javaType="BookCategory">
+            <id property="cateid" column="cateid"/>
+            <result property="catename" column="catename"/>
+        </association>
+    </resultMap>
+
+    <select id="ByTypeIdGetBookInfo2" parameterType="int" resultMap="Byinfo2">
+        SELECT b.*,bc.cateid,bc.catename from book b,bookcategory bc
+         WHERE b.bookcategory=#{bookcategory}
+          and b.bookcategory=bc.cateid
+    </select>
+
+    <select id="LikeBookName" resultType="Book">
+        SELECT * from  book where bookname like '%' #{bookname} '%' and bookcategory=#{bookcategory}
+    </select>
+    <select id="BookListByIf" resultType="Book">
+         SELECT * from  book
+         <where>
+             <if test="bookname!=null">
+                 AND bookname like '%' #{bookname} '%'
+             </if>
+             <if test="bookcategory!=0">
+                 and bookcategory=#{bookcategory}
+             </if>
+         </where>
+    </select>
+
+    <select id="BookListChoose" resultType="Book">
+      SELECT * from  book
+      <if test="array.length>0">
+          WHERE bookid in
+          <foreach collection="array" open="(" close=")" separator="," item="id">
+              #{id}
+          </foreach>
+      </if>
+    </select>
+
+    <select id="BookListList" resultType="Book">
+        SELECT * from  book
+        <if test="list.size>0">
+            WHERE bookid in
+            <foreach collection="list" open="(" close=")" separator="," item="id">
+                #{id.bookid}
+            </foreach>
+        </if>
+    </select>
+</mapper>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context ="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+              http://www.springframework.org/schema/beans/spring-context.xsd
+">
+
+   <!--配置数据源  c3p0-->
+    <bean class="com.alibaba.druid.pool.DruidDataSource" id="dataSourceProxy">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/bookdb"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value=""></property>
+    </bean>
+
+    <!--配置sqlsessionFactoryBean-->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceProxy"></property>
+        <property name="configLocation" value="classpath:Mybatis-config2.xml"></property>
+        <property name="mapperLocations" >
+            <list>
+                <value>classpath:cn/jjz/demo2/dao/*.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--配置SqlSessionTemplate-->
+     <bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+         <constructor-arg name="sqlSessionFactory" ref="sessionFactory"></constructor-arg>
+     </bean>
+    <!--配置bookdao的实现类-->
+    <bean id="book" class="cn.jjz.demo2.dao.BookDaoImpl">
+        <property name="st" ref="sessionTemplate"></property>
+    </bean>
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="dataSourceName" value="com.mysql.jdbc.Driver"></property>
+        <property name="user" value="jdbc:mysql://localhost:3306/bookdb&amp;ampcharacterEncoding=utf-8"></property>
+        <property name="jdbcUrl" value="root"></property>
+        <property name="password" value=""></property>
+    </bean>
+    &lt;!&ndash;配置sqlsessionFactoryBean&ndash;&gt;
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:Mybatis-config.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:cn/jjz/demo1/dao/*.xml</value>
+            </list>
+        </property>
+    </bean>-->
+
+</beans>

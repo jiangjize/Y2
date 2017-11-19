@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+    <bean id="fan" class="cn.jjz.spring802_5.FanDaoImp"></bean>
+    <bean id="myAspectj" class="cn.jjz.spring802_5.MyAspectj"></bean>
+     <aop:config>
+         <aop:pointcut id="po" expression="execution(* *..spring802_5.*.*(..))"></aop:pointcut>
+         <aop:aspect ref="myAspectj">
+             <aop:before method="befor" pointcut-ref="po"></aop:before>
+             <aop:before method="befor(org.aspectj.lang.JoinPoint)" pointcut-ref="po"></aop:before>
+             <aop:after-returning method="ret" returning="o" pointcut-ref="po"></aop:after-returning>
+             <aop:after-returning method="ret(java.lang.Object)" returning="o" pointcut-ref="po"/>
+             <aop:after method="after" pointcut-ref="po"></aop:after>
+         </aop:aspect>
+     </aop:config>
+</beans>

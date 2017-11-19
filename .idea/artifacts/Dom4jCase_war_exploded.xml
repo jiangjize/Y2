@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Dom4jCase:war exploded">
+    <output-path>$PROJECT_DIR$/Dom4jCase/target/Smbms-SpringMVC</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Dom4jCase" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/Dom4jCase/target/Smbms-SpringMVC/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="Dom4jCase/web/Web" />
+    </root>
+  </artifact>
+</component>

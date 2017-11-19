@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.ProviderDao">
+<!--获取所有的供应商信息-->
+<select id="getProviderInfo" resultType="Provider">
+    SELECT * from smbms_provider limit #{size},#{index}
+</select>
+    <!--获取供应商总记录数-->
+    <select id="getCount" resultType="int">
+        SELECT count(*) FROM smbms_provider
+    </select>
+</mapper>

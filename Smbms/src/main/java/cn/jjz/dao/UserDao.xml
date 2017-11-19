@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.UserDao">
+    <sql id="GetUser">
+        id,userCode,userName,userPassword,gender,birthday ,phone,address,userRole,createdBy,creationDate,modifyBy,modifyDate
+    </sql>
+    <!--查找用户-->
+   <select id="SelectUserByNameAndCode" resultType="User" parameterType="User">
+       SELECT  <include refid="GetUser"></include> from smbms_user
+       <where>
+           <if test="use!=null">
+               AND userName like '%' #{use} '%' OR userCode like '%' #{use} '%' limit #{size},#{index}
+           </if>
+       </where>
+   </select>
+    <!--查询所有的用户-->
+    <select id="GetAllUserList" resultType="User">
+    SELECT <include refid="GetUser"></include> from smbms_user limit #{size},#{index}
+    </select>
+    <!--查询所有的用户总记录-->
+    <select id="GetCount" resultType="int" >
+        select count(*) from smbms_user
+    </select>
+    <!--查询搜索到的用户总记录-->
+    <select id="GetCountByname" resultType="int" parameterType="String">
+        select count(*) from smbms_user
+        <where>
+            <if test="use!=null">
+                AND userName like '%' #{use} '%' OR userCode like '%' #{use} '%'
+            </if>
+        </where>
+    </select>
+    <!--登录-->
+    <select id="Login" resultType="int" >
+          SELECT COUNT(1) as id from smbms_user WHERE userCode=#{n} and userPassword=#{p}
+    </select>
+    <!--添加-->
+    <insert id="AddUser" parameterType="User">
+    INSERT into smbms_user(userCode,userName,userPassword,gender,birthday,phone,address,userRole,createdBy,creationDate,modifyBy,modifyDate)
+     VALUES (#{userCode},#{userName},#{userPassword},#{gender},#{birthday},#{phone},#{address},#{userRole},#{createdBy},#{creationDate},#{modifyBy},#{modifyDate})
+    </insert>
+    <!--删除-->
+    <delete id="DeleTeUser" parameterType="User">
+      delete from smbms_user where userCode=#{username}
+    </delete>
+    <!--修改-->
+    <update id="UpdetUser">
+        UPDATE  smbms_user
+        SET userName=${name},gender=${gender},birthday=${birt},phone=${phone},address=${address},userRole=${role}
+        WHERE userCode=${code}
+    </update>
+    <!--删除 ...新...-->
+    <update id="UpdetUserNew">
+        update smbms_user set
+        <if test="userName!= null">
+            userName = #{userName},
+        </if>
+        <if test="gender!= null">
+            gender = #{gender},
+        </if>
+        <if test="birthday!= null">
+            birthday = #{birthday}
+        </if>
+        <if test="phone!= null">
+            phone = #{phone},
+        </if>
+        <if test="address!= null">
+            address = #{address},
+        </if>
+        <if test="userRole!= null">
+            userRole = #{userRole}
+        </if>
+
+        <where>
+            <if test="userCode!= null">
+                userCode = #{userCode}
+            </if>
+        </where>
+    </update>
+
+    <!--验证-->
+    <select id="Yanzhen" parameterType="String" resultType="int">
+        select COUNT(1) as id from smbms_user where userCode=#{username}
+    </select>
+</mapper>

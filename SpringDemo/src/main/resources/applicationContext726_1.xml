@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+     <!--车辆-->
+  <bean id="car" class="cn.jjz.spring726_1.Car">
+     <property name="name" value="布加迪威龙"></property>
+     <property name="color" value="白色"></property>
+ </bean>
+    <!--设值注入-->
+   <bean id="stu" class="cn.jjz.spring726_1.Stu">
+      <property name="age" value="16"></property>
+      <property name="name" value="旺旺"></property>
+      <property name="car" ref="car"></property>
+  </bean>
+    <!--构造注入-->
+    <bean id="stu2" class="cn.jjz.spring726_1.Stu">
+       <!-- <constructor-arg name="age" value="11"></constructor-arg>
+        <constructor-arg name="name" value="流光"></constructor-arg>
+        <constructor-arg name="car" ref="car"></constructor-arg>-->
+        <constructor-arg index="0" value="流光"></constructor-arg>
+        <constructor-arg index="1" value="11"></constructor-arg>
+        <constructor-arg index="2" ref="car"></constructor-arg>
+    </bean>
+    <!--p命名空间注入-->
+    <bean id="stu3" class="cn.jjz.spring726_1.Stu" p:age="20" p:name="奖金" p:car-ref="car">
+    </bean>
+
+</beans>

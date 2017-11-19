@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.StudentDao">
+    <!-- 查询所有学生-->
+    <resultMap id="StudentInfo" type="StudentInfo">
+        <id property="stucode" column="stucode"></id>
+        <result property="stuname" column="stuname"></result>
+        <result property="stuscore" column="stuscore"></result>
+        <result property="stugrade" column="stugrade"></result>
+        <association property="gradeInfo" javaType="GradeInfo" >
+            <id property="gracode" column="gracode"></id>
+            <result property="graname" column="graname"></result>
+        </association>
+    </resultMap>
+    <select id="accessStudentInfo" resultMap="StudentInfo" parameterType="StudentInfo">
+        select * from StudentInfo s,GradeInfo g
+        where s.stugrade=g.gracode
+    </select>
+    <!--按条件查询学生-->
+    <select id="onConditionQuery" resultMap="StudentInfo">
+          select s.* ,g.* from StudentInfo s,GradeInfo g
+          <where>
+              <if test="stuname !=null">
+               and   s.stuname like '%' #{stuname} '%'
+              </if>
+              <if test="stugrade !=0">
+               and   s.stugrade=#{stugrade}
+              </if>
+               and  s.stugrade=g.gracode
+          </where>
+    </select>
+    <!--录入成绩-->
+    <update id="inputResult" parameterType="StudentInfo">
+        UPDATE studentinfo SET stuscore=#{stuscore} WHERE stucode=#{stucode}
+    </update>
+</mapper>

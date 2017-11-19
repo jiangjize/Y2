@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context ="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+              http://www.springframework.org/schema/context/spring-context.xsd
+">
+    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+ <!-- 默认数据源
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+      <property name="url" value="jdbc:mysql://localhost:3306/bookdb?ampcharacterEncoding=utf-8" />
+      <property name="username" value="root" />
+      <property name="password" value=""/>
+
+       <property name="driverClassName" value="${jdbc.driverClassName}"></property>
+       <property name="url" value="${jdbc.url}" />
+       <property name="username" value="${jdbc.username}" />
+       <property name="password" value="${jdbc.password}"/>
+   </bean>-->
+   <!--  dbcp数据源
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+    <property name="url" value="jdbc:mysql://localhost:3306/bookdb?ampcharacterEncoding=utf-8" />
+    <property name="username" value="root" />
+    <property name="password" value=""/>
+    </bean>-->
+    <!-- c3p0数据源-->
+  <!--  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/bookdb?ampcharacterEncoding=utf-8" />
+        <property name="user" value="root" />
+        <property name="password" value=""/>
+    </bean>-->
+    <!-- druid数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/bookdb?ampcharacterEncoding=utf-8" />
+        <property name="username" value="root" />
+        <property name="password" value=""/>
+    </bean>
+
+   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+      <property name="dataSource" ref="dataSource"></property>
+   </bean>
+    <bean id="bookDao" class="cn.jjz.spring802_4.dao.BookDaoImpl">
+      <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+   <bean id="bookService" class="cn.jjz.spring802_4.service.BookServiceImpl">
+      <property name="d" ref="bookDao"></property>
+   </bean>
+</beans>

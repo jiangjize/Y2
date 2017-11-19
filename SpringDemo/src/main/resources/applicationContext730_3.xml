@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+     <bean id="studao" class="cn.jjz.spring730_3.dao.StuDaoImpl"></bean>
+     <bean id="stuservice" class="cn.jjz.spring730_3.service.StuServiceImpl">
+         <property name="dao" ref="studao"></property>
+     </bean>
+    <bean id="advisa" class="cn.jjz.spring730_3.aop.AdvisAop"></bean>
+    <bean id="advisb" class="cn.jjz.spring730_3.aop.HouAop"></bean>
+    <aop:config >
+        <aop:pointcut id="aa" expression="execution(public void Save(cn.jjz.spring730_3.entity.Student))"></aop:pointcut>
+        <aop:advisor advice-ref="advisa" pointcut-ref="aa"></aop:advisor>
+        <aop:advisor advice-ref="advisb" pointcut-ref="aa"></aop:advisor>
+    </aop:config>
+</beans>

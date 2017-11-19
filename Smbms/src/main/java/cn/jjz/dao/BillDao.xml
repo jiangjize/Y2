@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.BillDao">
+    <!--获取所有的订单信息-->
+    <resultMap id="Billmapp" type="Bill">
+        <id column="id" property="id"></id>
+        <result property="billCode" column="billCode" ></result>
+        <result property="productName" column="productName" ></result>
+        <result property="productDesc" column="productDesc" ></result>
+        <result property="productUnit" column="productUnit" ></result>
+        <result property="billCode" column="billCode" ></result>
+        <result property="productCount" column="productCount" ></result>
+        <result property="totalPrice" column="totalPrice" ></result>
+        <result property="isPayment" column="isPayment" ></result>
+        <result property="createdBy" column="createdBy" ></result>
+        <result property="providerId" column="providerId" ></result>
+        <result property="creationDate" column="creationDate"></result>
+        <association property="pro" javaType="Provider">
+            <id column="id" property="id"></id>
+            <result property="proName" column="proName"></result>
+        </association>
+    </resultMap>
+    <select id="getBillInfo" resultMap="Billmapp">
+        SELECT b.* ,p.proName from smbms_bill b,smbms_provider p
+         WHERE b.providerId=p.id
+         limit #{size},#{index}
+    </select>
+    <!--获取订单总记录数-->
+    <select id="getCount" resultType="int">
+        SELECT count(*) FROM smbms_bill
+    </select>
+    <!--多添件查询-->
+    <resultMap id="BillMap" type="Bill">
+        <id column="id" property="id"></id>
+        <result property="billCode" column="billCode" ></result>
+        <result property="productName" column="productName" ></result>
+        <result property="productDesc" column="productDesc" ></result>
+        <result property="productUnit" column="productUnit" ></result>
+        <result property="billCode" column="billCode" ></result>
+        <result property="productCount" column="productCount" ></result>
+        <result property="totalPrice" column="totalPrice" ></result>
+        <result property="isPayment" column="isPayment" ></result>
+        <result property="createdBy" column="createdBy" ></result>
+        <result property="providerId" column="providerId" ></result>
+        <association property="pro" javaType="Provider">
+            <id column="id" property="id"></id>
+            <result property="proName" column="proName"></result>
+        </association>
+    </resultMap>
+    <select id="ByTermSelectBill" resultMap="BillMap" >
+        SELECT b.* ,p.proName from smbms_bill b,smbms_provider p
+        <where>
+            <if test="n!=null" >
+             AND  b.productName like '%' #{n} '%'
+            </if>
+            <if test="is!=0" >
+             and  b.isPayment=#{is}
+            </if>
+            <if test="pid!=0" >
+              and b.providerId=#{pid}  and b.isPayment=p.id
+            </if>
+            limit #{size},#{index}
+        </where>
+    </select>
+    <!--获取查询订单总记录数-->
+    <select id="getSelectCount" resultMap="BillMap">
+        SELECT COUNT(*) from smbms_bill b,smbms_provider p
+        <where>
+            <if test="n!=null" >
+                AND  b.productName like '%' #{n} '%'
+            </if>
+            <if test="is!=0" >
+                and  b.isPayment=#{is} and b.isPayment=p.id
+            </if>
+            <if test="pid!=0" >
+                and b.providerId=#{pid}
+            </if>
+
+        </where>
+    </select>
+
+</mapper>

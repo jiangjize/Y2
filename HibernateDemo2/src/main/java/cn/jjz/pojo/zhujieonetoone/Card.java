@@ -1,0 +1,42 @@
+package cn.jjz.pojo.zhujieonetoone;
+
+import javax.persistence.*;
+
+/**
+ * Created by lenovo on 2017/10/11.
+ */
+@Entity
+@Table(name = "card")
+public class Card {
+    @Id
+    @GeneratedValue
+    private Integer cid;
+    private String cname;
+    @OneToOne
+    @JoinColumn(name = "hid2")
+    private Humen humen;
+
+    public Integer getCid() {
+        return cid;
+    }
+
+    public void setCid(Integer cid) {
+        this.cid = cid;
+    }
+
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+
+    public Humen getHumen() {
+        return humen;
+    }
+
+    public void setHumen(Humen humen) {
+        this.humen = humen;
+    }
+}

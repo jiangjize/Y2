@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="01_Mybatis" />
+        <module name="02_Mybatis" />
+        <module name="03_Mybatis" />
+        <module name="04_Mybatis" />
+        <module name="Demo0806" />
+        <module name="Dom4jCase" />
+        <module name="HibernateDemo" />
+        <module name="HibernateDemo2" />
+        <module name="HSSM" />
+        <module name="KaoQin" />
+        <module name="MybatisSpringSmbms" />
+        <module name="MyNews" />
+        <module name="Smbms" />
+        <module name="SmbmsMVC" />
+        <module name="SmbmsMvc" />
+        <module name="SpringBootDemo" />
+        <module name="SpringDemo" />
+        <module name="SpringmvcDemo" />
+        <module name="SpringMybatis" />
+        <module name="SSHDemo1" />
+        <module name="SSHDemo2" />
+        <module name="SSHZH" />
+        <module name="SSMDemo1" />
+        <module name="SSMDemo2" />
+        <module name="SSMDemo3" />
+        <module name="Struts2Demo" />
+        <module name="StudentManageSystem" />
+        <module name="tms" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="01_Mybatis" target="1.5" />
+      <module name="02_Mybatis" target="1.5" />
+      <module name="03_Mybatis" target="1.5" />
+      <module name="04_Mybatis" target="1.5" />
+      <module name="Demo0806" target="1.6" />
+      <module name="Dom4jCase" target="1.5" />
+      <module name="HibernateDemo" target="1.5" />
+      <module name="HibernateDemo2" target="1.5" />
+      <module name="HSSM" target="1.6" />
+      <module name="KaoQin" target="1.5" />
+      <module name="MybatisSpringSmbms" target="1.5" />
+      <module name="MyNews" target="1.5" />
+      <module name="Smbms" target="1.5" />
+      <module name="Smbms-SpringMVC" target="1.5" />
+      <module name="SmbmsMVC" target="1.5" />
+      <module name="SpringBootDemo" target="1.5" />
+      <module name="SpringDemo" target="1.5" />
+      <module name="SpringmvcDemo" target="1.5" />
+      <module name="SpringMybatis" target="1.5" />
+      <module name="SSHDemo1" target="1.5" />
+      <module name="SSHDemo2" target="1.5" />
+      <module name="SSHZH" target="1.5" />
+      <module name="SSMDemo1" target="1.5" />
+      <module name="SSMDemo2" target="1.5" />
+      <module name="SSMDemo3" target="1.5" />
+      <module name="Struts2Demo" target="1.5" />
+      <module name="StudentManageSystem" target="1.5" />
+      <module name="tms" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

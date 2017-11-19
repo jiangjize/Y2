@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.IUsDao">
+    <!-- 登陆-->
+    <select id="Login" resultType="Us">
+        select *  from S_UserInfo where s_upwd=#{s_upwd} and s_uacc=#{s_uacc}
+    </select>
+    <select id="queryAllUser" resultType="Us">
+        select * from S_UserInfo
+    </select>
+
+</mapper>

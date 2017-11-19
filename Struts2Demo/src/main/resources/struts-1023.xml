@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--动态方法调用-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" ></constant>
+    <!--在devMode被激活的模式下，能够明显的提高开发效率，它会提供更多的日志或着debug信息。
+    当然提高开发效率，在性能方面会付出一定的代价。所以struts默认的是非开发模式。设置为开发模式之后：
+   1、每次请求都会重新加载资源文件，所以当对properties文件进行修改后，
+   下一次请求是就能够反映相应的变化。（struts.i18n.reload = true也可以达到相同的效果）
+   2、每次请求的时候也会重新加载xml配置文件、验证文件等，这样可以方便调试或者修改相应的配置文件，
+   而不用重新部署重启web服务器。(struts.configuration.xml.reload = true 也可以达到相同的效果)-->
+    <constant name="struts.devMode" value="true"></constant>
+    <package name="two"  namespace="/two" extends="struts-default">
+
+        <action name="input" class="cn.jjz.action1023.ManyAction" method="input">
+            <result name="input">/1023/index.jsp</result>
+        </action>
+
+        <action name="delete" class="cn.jjz.action1023.ManyAction" method="delete">
+            <result name="delete">/1023/test1.jsp</result>
+        </action>
+        <!--result type-->
+        <action name="input2" class="cn.jjz.action1023.ManyAction" method="input">
+            <result name="input" type="chain">
+                <param name="actionName">delete</param>
+                <param name="namespace">/</param>
+            </result>
+        </action>
+
+        <action name="delete" class="cn.jjz.action1023.ManyAction" method="delete">
+            <result name="delete">/1023/test1.jsp</result>
+        </action>
+        <!--使用！动态方法     注意点： 需要将 struts.enable.DynamicMethodInvocation 打开
+        http://localhost:8080/dmi!list
+        http://localhost:8080/dmi!del
+        DMI的实现本质是，其实现代码扫描action名字中的！字符，如果找到，则“欺骗”
+        框架来调用！字符后的方法，而非execute方法。虽然调用的是其他方法，但是它使用的
+        仍然是execute方法的配置，包括验证。框架“相信”它正在调用的是action类的execute方法
+        -->
+        <action name="dmi" class="cn.jjz.action1023.DmiAction" >
+            <result>/1023/list.jsp</result>
+            <result>/1023/del.jsp</result>
+        </action>
+        <!--通配符 测验如下：
+        http://localhost:8080/two/UserAction_userdel
+        http://localhost:8080/two/UserAction_useradd
+        http://localhost:8080/two/RoleAction_rolelist
+        http://localhost:8080/two/RoleAction_roledel
+        -->
+         <action name="*_*" class="cn.jjz.action1023.{1}" method="{2}">
+             <result name="{2}">/1023/{1}/{2}.jsp</result>
+         </action>
+
+
+    </package>
+</struts>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.NewsDao">
+<select id="getNewsList" resultType="News">
+    SELECT * from news  limit #{size},#{index}
+</select>
+
+    <select id="GetCount" resultType="int">
+        SELECT COUNT(1) as id FROM news
+    </select>
+
+
+    <select id="ByNewsName" parameterType="String" resultType="News">
+        select * from news WHERE newstitle=#{name}
+    </select>
+</mapper>

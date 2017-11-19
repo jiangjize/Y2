@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"></constant>
+    <package name="one" namespace="/"  extends="struts-default">
+      <!--
+         配置一个action  一个Struts2的请求就是一个action
+         action :
+           name 属性是Struts2发送请求的名字
+           class 属性  指定要进入的action类
+           method 属性 class中的方法名  默认为 execute
+         result ： 表示action 方法执行后可能返回的一个结果，
+             一个action可能会有多个result 节点 用name来区分
+             name 属性 ：标识一个result 和action方法的返回值对应
+              默认为 success
+             type 属性：表示结果的类型 默认为 dispatch（转发到结果）
+      -->
+
+        <action name="add" class="cn.jjz.action.RsAction" method="add">
+            <result name="success">/ok.jsp</result>
+        </action>
+
+    </package>
+
+</struts>

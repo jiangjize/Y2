@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--list注入-->
+    <bean id="list" class="cn.jjz.spring726_3.Gather">
+        <property name="list">
+            <list>
+                <value>篮球</value>
+                <value>羽毛球</value>
+                <value>排球</value>
+                <value>足球</value>
+            </list>
+        </property>
+    </bean>
+    <!--map注入-->
+    <bean id="set" class="cn.jjz.spring726_3.Gather">
+        <property name="set">
+            <set>
+                <value>乒乓球</value>
+                <value>橄榄球</value>
+                <value>球球</value>
+            </set>
+        </property>
+    </bean>
+    <!--array注入-->
+    <bean id="array" class="cn.jjz.spring726_3.Gather">
+        <property name="names" >
+            <array>
+            <value>李彪</value>
+            <value>阿斯顿</value>
+            <value>怪蜀黍</value>
+            </array>
+        </property>
+    </bean>
+    <!--property注入-->
+    <bean id="property" class="cn.jjz.spring726_3.Gather">
+        <property name="properties">
+            <props>
+                <prop key="简介">简介</prop>
+                <prop key="作者">作者</prop>
+                <prop key="名称">名称</prop>
+            </props>
+        </property>
+    </bean>
+    <!--set注入-->
+<bean id="map" class="cn.jjz.spring726_3.Gather">
+    <property name="map">
+        <map>
+            <entry>
+                <key><value>football</value></key>
+                <value>足球</value>
+            </entry>
+            <entry>
+                <key><value>basketball</value></key>
+                <value>蓝球</value>
+            </entry>
+        </map>
+    </property>
+</bean>
+
+</beans>

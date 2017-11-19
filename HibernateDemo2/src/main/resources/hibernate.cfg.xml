@@ -1,0 +1,37 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+        <property name="connection.username">jjz</property>
+        <property name="connection.password">jjz</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="connection.autocommit">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping resource="cn/jjz/pojo/Rs.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/Emp.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/Account.hbm.xml"/>
+  <!--      <mapping resource="cn/jjz/pojo/Subjects.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/Options.hbm.xml"/>-->
+    <!--    &lt;!&ndash;多对一&ndash;&gt;
+        <mapping resource="cn/jjz/pojo/manytoone/Dept.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/manytoone/Emps.hbm.xml"/>-->
+        <!--多对多-->
+        <mapping resource="cn/jjz/pojo/manytomany/Employee.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/manytomany/Project.hbm.xml"/>
+        <!--一对多-->
+        <mapping resource="cn/jjz/pojo/onetomany/Dept.hbm.xml"/>
+        <mapping resource="cn/jjz/pojo/onetomany/Emps.hbm.xml"/>
+        <mapping class="cn.jjz.pojo.zhujie.Student"></mapping>
+        <mapping class="cn.jjz.pojo.zhujieonetoone.Humen"></mapping>
+        <mapping class="cn.jjz.pojo.zhujieonetoone.Card"></mapping>
+        <mapping class="cn.jjz.pojo.zhujiemanytomany.Player"></mapping>
+        <mapping class="cn.jjz.pojo.zhujiemanytomany.Game"></mapping>
+        <mapping class="cn.jjz.pojo.zhujieonetomany.Oi"></mapping>
+        <mapping class="cn.jjz.pojo.zhujieonetomany.Os"></mapping>
+    </session-factory>
+</hibernate-configuration>

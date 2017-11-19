@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.devMode" value="true"></constant>
+    <package name="one" namespace="/one"  extends="struts-default">
+      <!--
+         配置一个action  一个Struts2的请求就是一个action
+         action :
+           name 属性是Struts2发送请求的名字
+           class 属性  指定要进入的action类
+           method 属性 class中的方法名  默认为 execute
+         result ： 表示action 方法执行后可能返回的一个结果，
+             一个action可能会有多个result 节点 用name来区分
+             name 属性 ：标识一个result 和action方法的返回值对应
+              默认为 success
+             type 属性：表示结果的类型 默认为 dispatch（转发到结果）
+      -->
+        <action name="index">   <!--  没class 为什么可以跳转到index.jsp？？-->
+            <result>/index.jsp</result>
+        </action>
+           <!--   原因：如果 class不写  默认为 com.opensymphony.xwork2.ActionSupport
+                       method=“execute”
+                    result name=“success”
+                                   ↓
+        <action name="index" class="com.opensymphony.xwork2.ActionSupport">
+            <result name="success">/index.jsp</result>
+        </action>
+           -->
+        <action name="index2" class="cn.jjz.action1021.Struts2Action">
+            <result name="success">/index.jsp</result>
+        </action>
+
+        <action name="tijiao" class="cn.jjz.action1021.HelloWorld">
+            <result name="sucess">/input.jsp</result>
+        </action>
+
+        <action name="save" class="cn.jjz.action1021.HelloWorld" method="Save">
+            <result name="Save">/ok.jsp</result>
+        </action>
+
+        <action name="Login" class="cn.jjz.action1021.LoginAction">
+            <result name="success">/loginyes.jsp</result>
+            <result name="err">/loginerr.jsp</result>
+        </action>
+
+        <action name="Logins" class="cn.jjz.action1021.UserLogin">
+            <result name="success">/loginyes.jsp</result>
+            <result name="err">/loginerr.jsp</result>
+        </action>
+
+        <action name="log" class="cn.jjz.action1022.HelloAction">
+            <result name="success">/1022/loginyes.jsp</result>
+            <result name="err">/1022/loginerr.jsp</result>
+        </action>
+
+
+        <action name="go" class="cn.jjz.action1022.TestServletApi">
+            <result name="success">/1022/testapiok.jsp</result>
+        </action>
+
+      <!--  <action name="input" class="cn.jjz.action1023.ManyAction" method="input">
+            <result name="input">/1023/index.jsp</result>
+        </action>
+
+        <action name="delete" class="cn.jjz.action1023.ManyAction" method="delete">
+            <result name="delete">/1023/test1.jsp</result>
+        </action>
+-->
+
+    </package>
+    <include file="struts-1023.xml"/>
+    <include file="struts-1024.xml"/>
+    <include file="struts-1025.xml"/>
+    <include file="struts-1026.xml"/>
+    <include file="struts-1103.xml"/>
+</struts>

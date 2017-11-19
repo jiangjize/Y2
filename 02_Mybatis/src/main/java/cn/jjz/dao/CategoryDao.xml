@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.CategoryDao">
+    <resultMap id="AllMap" type="Category">
+        <id column="cid" property="cid"></id>
+        <result property="cname" column="cname"></result>
+        <collection property="cates" column="cid" ofType="Category" select="All">
+        </collection>
+    </resultMap>
+<select id="All" resultMap="AllMap" >
+    select * from category where pid=#{pid}
+</select>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--动态方法调用-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    <!--在devMode被激活的模式下，能够明显的提高开发效率，它会提供更多的日志或着debug信息。
+    当然提高开发效率，在性能方面会付出一定的代价。所以struts默认的是非开发模式。设置为开发模式之后：
+   1、每次请求都会重新加载资源文件，所以当对properties文件进行修改后，
+   下一次请求是就能够反映相应的变化。（struts.i18n.reload = true也可以达到相同的效果）
+   2、每次请求的时候也会重新加载xml配置文件、验证文件等，这样可以方便调试或者修改相应的配置文件，
+   而不用重新部署重启web服务器。(struts.configuration.xml.reload = true 也可以达到相同的效果)-->
+    <constant name="struts.devMode" value="false"></constant>
+    <package name="four" namespace="/four" extends="struts-default">
+        <interceptors>
+            <!--自定义拦截器-->
+            <interceptor name="MyTime" class="cn.jjz.action1025.MyIntercept"></interceptor>
+            <!--设置拦截器栈-->
+            <interceptor-stack name="MyInterStack">
+                <interceptor-ref name="MyTime"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+
+        <!--设置默认拦截器栈-->
+        <default-interceptor-ref name="MyInterStack"></default-interceptor-ref>
+
+        <action name="a" class="cn.jjz.action1025.TestAction" method="a">
+            <result>/1025/b.jsp</result>
+            <result name="err">/1025/a.jsp</result>
+            <!--自定义拦截器-->
+            <interceptor-ref name="MyTime"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+
+        <action name="b" class="cn.jjz.action1025.TestAction" method="b">
+            <result name="a">/1025/b.jsp</result>
+            <!--默认使用的是 MyInterStack拦截器栈-->
+        </action>
+
+        <action name="loging" class="cn.jjz.action1025.LoginAction" method="Login">
+            <result>/1025/success.jsp</result>
+            <result name="input">/1025/login.jsp</result>
+            <!--默认使用的是 MyInterStack拦截器栈-->
+        </action>
+
+
+
+
+    </package>
+    <package name="wu" namespace="/wu" extends="struts-default">
+        <action name="ognl" class="cn.jjz.ognl.OgnlAction">
+            <result name="success">/1025/ognl/ognl2.jsp</result>
+        </action>
+        <action name="ognl2" class="cn.jjz.ognl.OgnlAction">
+            <result name="success">/1025/ognl/ognl2.jsp</result>
+        </action>
+    </package>
+</struts>

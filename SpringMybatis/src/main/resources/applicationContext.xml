@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+">
+     <!--配置数据源   用的dbcp-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/bookdb?ampcharacterEncoding=utf-8" />
+        <property name="username" value="root" />
+        <property name="password" value=""/>
+    </bean>
+    <!--配置sqlsessionFactoryBean-->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!--使用mybtis中的配置-->
+        <property name="configLocation" value="classpath:Mybatis-config.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:cn/jjz/demo1/dao/*.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--配置sqlsessionTemplate-->
+    <bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg name="sqlSessionFactory" ref="sessionFactory"></constructor-arg>
+    </bean>
+    <!--配置Dao-->
+    <bean id="book" class="cn.jjz.demo1.dao.BookDaoImpl">
+        <property name="st" ref="sessionTemplate"></property>
+    </bean>
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/LianXiDemo" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/01_Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/02_Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/03_Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Smbms/pom.xml" />
+        <option value="$PROJECT_DIR$/MyNews/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringMybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/MybatisSpringSmbms/pom.xml" />
+        <option value="$PROJECT_DIR$/Demo0806/pom.xml" />
+        <option value="$PROJECT_DIR$/StudentManageSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/KaoQin/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringmvcDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/SmbmsMvc/pom.xml" />
+        <option value="$PROJECT_DIR$/SmbmsMVC/pom.xml" />
+        <option value="$PROJECT_DIR$/HibernateDemo/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Dom4jCase/pom.xml" />
+        <option value="$PROJECT_DIR$/Tsm/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

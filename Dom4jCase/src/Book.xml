@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="gb2312"?>
+<books>
+<!-- 图书信息
+   book 书名    author 作者    price 价格
+ --> 
+  <book name="一个人的旅行">
+  <author name="孙吉">
+  <price name="50"></price>
+  </author>
+  </book>
+  
+  
+  <book name="三只猪">
+  <author name="童话">
+   <price name="20"></price>
+  </author>
+  </book>
+  
+</books>

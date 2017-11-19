@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="HSSM:war">
+    <output-path>$PROJECT_DIR$/HSSM/target</output-path>
+    <root id="archive" name="Smbms-SpringMVC.war">
+      <element id="artifact" artifact-name="HSSM:war exploded" />
+    </root>
+  </artifact>
+</component>

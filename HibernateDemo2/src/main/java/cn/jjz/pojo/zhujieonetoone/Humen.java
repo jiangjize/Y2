@@ -1,0 +1,41 @@
+package cn.jjz.pojo.zhujieonetoone;
+
+import javax.persistence.*;
+
+/**
+ * Created by lenovo on 2017/10/11.
+ */
+@Entity
+@Table(name = "humen")
+public class Humen {
+    @Id
+    @GeneratedValue
+    private Integer hid;
+    private String hname;
+    @OneToOne(mappedBy = "humen")
+    private Card card;
+
+    public Integer getHid() {
+        return hid;
+    }
+
+    public void setHid(Integer hid) {
+        this.hid = hid;
+    }
+
+    public String getHname() {
+        return hname;
+    }
+
+    public void setHname(String hname) {
+        this.hname = hname;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+}

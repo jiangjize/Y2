@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="KaoQin:war">
+    <output-path>$PROJECT_DIR$/KaoQin/target</output-path>
+    <root id="archive" name="KaoQin-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="KaoQin:war exploded" />
+    </root>
+  </artifact>
+</component>

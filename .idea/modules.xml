@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01_Mybatis/01_Mybatis.iml" filepath="$PROJECT_DIR$/01_Mybatis/01_Mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02_Mybatis/02_Mybatis.iml" filepath="$PROJECT_DIR$/02_Mybatis/02_Mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03_Mybatis/03_Mybatis.iml" filepath="$PROJECT_DIR$/03_Mybatis/03_Mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04_Mybatis/04_Mybatis.iml" filepath="$PROJECT_DIR$/04_Mybatis/04_Mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Demo0806/Demo0806.iml" filepath="$PROJECT_DIR$/Demo0806/Demo0806.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dom4jCase/Dom4jCase.iml" filepath="$PROJECT_DIR$/Dom4jCase/Dom4jCase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HSSM/HSSM.iml" filepath="$PROJECT_DIR$/HSSM/HSSM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HibernateDemo/HibernateDemo.iml" filepath="$PROJECT_DIR$/HibernateDemo/HibernateDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HibernateDemo2/HibernateDemo2.iml" filepath="$PROJECT_DIR$/HibernateDemo2/HibernateDemo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KaoQin/KaoQin.iml" filepath="$PROJECT_DIR$/KaoQin/KaoQin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyNews/MyNews.iml" filepath="$PROJECT_DIR$/MyNews/MyNews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MybatisSpringSmbms/MybatisSpringSmbms.iml" filepath="$PROJECT_DIR$/MybatisSpringSmbms/MybatisSpringSmbms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSHDemo1/SSHDemo1.iml" filepath="$PROJECT_DIR$/SSHDemo1/SSHDemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSHDemo2/SSHDemo2.iml" filepath="$PROJECT_DIR$/SSHDemo2/SSHDemo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSHZH/SSHZH.iml" filepath="$PROJECT_DIR$/SSHZH/SSHZH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSMDemo1/SSMDemo1.iml" filepath="$PROJECT_DIR$/SSMDemo1/SSMDemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSMDemo2/SSMDemo2.iml" filepath="$PROJECT_DIR$/SSMDemo2/SSMDemo2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SSMDemo3/SSMDemo3.iml" filepath="$PROJECT_DIR$/SSMDemo3/SSMDemo3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smbms/Smbms.iml" filepath="$PROJECT_DIR$/Smbms/Smbms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smbms-SpringMVC.iml" filepath="$PROJECT_DIR$/Smbms-SpringMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SmbmsMVC/SmbmsMVC.iml" filepath="$PROJECT_DIR$/SmbmsMVC/SmbmsMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringBootDemo/SpringBootDemo.iml" filepath="$PROJECT_DIR$/SpringBootDemo/SpringBootDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringDemo/SpringDemo.iml" filepath="$PROJECT_DIR$/SpringDemo/SpringDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringMybatis/SpringMybatis.iml" filepath="$PROJECT_DIR$/SpringMybatis/SpringMybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringmvcDemo/SpringmvcDemo.iml" filepath="$PROJECT_DIR$/SpringmvcDemo/SpringmvcDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Struts2Demo/Struts2Demo.iml" filepath="$PROJECT_DIR$/Struts2Demo/Struts2Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StudentManageSystem/StudentManageSystem.iml" filepath="$PROJECT_DIR$/StudentManageSystem/StudentManageSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tms/tms.iml" filepath="$PROJECT_DIR$/Tms/tms.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="fan" class="cn.jjz.spring802_1.FanDaoImp"></bean>
+
+    <bean id="aopadvice" class="cn.jjz.spring802_1.AopAdvice"></bean>
+
+    <bean id="advisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="aopadvice"></property>
+        <property name="patterns" value=".*A.*"></property>
+    </bean>
+         <!--默认advisor自动代理生成器-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
+</beans>

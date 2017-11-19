@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jjz.dao.StudentDao">
+    <!-- 获取学生-->
+    <resultMap id="MapCl" type="Student">
+        <id property="studentid" column="studentid"></id>
+        <result property="studentname" column="studentname"></result>
+        <result property="classesid" column="classesid"></result>
+        <result property="studentcatetime" column="studentcatetime"></result>
+        <association property="classes" javaType="Classes">
+            <id column="classesid" property="classesid"></id>
+            <result column="classesname" property="classesname"></result>
+        </association>
+    </resultMap>
+<select id="ByclassSelect" resultMap="MapCl">
+    SELECT s.*,c.* FROM classes c,student s
+    <where>
+        <if test="classesid !=0">
+            s.classesid=#{classesid}
+        </if>
+        and s.classesid=c.classesid
+    </where>
+</select>
+</mapper>
